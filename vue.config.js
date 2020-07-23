@@ -3,6 +3,7 @@ module.exports = {
       port: 8080 // 端口号配置
     },
     configureWebpack: {
+      devtool: 'source-map',
       externals: {
      
       }
