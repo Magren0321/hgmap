@@ -12,7 +12,8 @@
             <p>{{name}}</p>
         </div>
         <div class="info">
-          <span>华广地图是基于Vue全家桶 + TypeScript + Element-UI以及ES6和高德地图Api技术栈的网站。源码</span><br><br>
+          <span>华广地图是基于Vue全家桶 + TypeScript + Element-UI以及ES6和高德地图Api技术栈的网站。源码已发布在Github上:
+            <a href="https://github.com/Magren0321/hgmap">华广地图</a></span><br><br>
           <span>该网站用于服务华广师生更全面的了解学校各场所位置，帮助新生更快熟悉校园。</span><br><br>
           <span>目前该项目还在完善中</span>
         </div>
