@@ -1,7 +1,22 @@
 <template>
   <div id="map">
     <div id="container">
-      <Mapmenu :map='map'></Mapmenu>
+      <Mapmenu :map='map' @show-dialog="handleChildValue"></Mapmenu>
+      <el-dialog
+          title="关  于"
+          :visible.sync="dialog"
+          :fullscreen = true
+          center>
+        <div class="header">
+            <img id="icon" v-bind:src="icon">
+            <p>{{name}}</p>
+        </div>
+        <div class="info">
+          <span>华广地图是基于Vue全家桶 + TypeScript + Element-UI以及ES6和高德地图Api技术栈的网站。源码</span><br><br>
+          <span>该网站用于服务华广师生更全面的了解学校各场所位置，帮助新生更快熟悉校园。</span><br><br>
+          <span>目前该项目还在完善中</span>
+        </div>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -21,7 +36,11 @@ import { Component,Vue } from 'vue-property-decorator';
 
 export default class Map extends Vue {
   map: any = null
-  
+  dialog = false
+  //dialog信息
+  icon = require('../assets/img/icon.png')
+  name = "MAGREN"
+
   // methods
   //初始化地图
   async initAMap(): Promise<void> {
@@ -39,8 +58,13 @@ export default class Map extends Vue {
       console.error(err);
     } 
   }
+  
+  //显示Dialog，信息
+  private handleChildValue(val: boolean) {
+        // val: 子组件传过来的值
+      this.dialog = val;
+  }
 
-    
    mounted() {
      this.initAMap();
   }
@@ -48,7 +72,7 @@ export default class Map extends Vue {
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
  *{
    margin: 0;
    padding: 0;
@@ -58,11 +82,25 @@ export default class Map extends Vue {
   width: 100%;
   height: 100%;
 }
-.amap-marker-label{
-  position: relative;
-  border:5px solid;
-  border-radius: 20px;
-  background: red;
-  
+.amap-marker-label{ 
+  padding: 5px;
+  border-radius: 3px;
+  border-color: #54B7E7;
+  border-width: 0px;
+  color:#54B7E7;
 }
+#icon{
+  width: 30%;
+  height: 30%;
+  border-radius: 100px;
+}
+.header{
+  text-align: center;
+}
+.info{
+  margin-top: 20px;
+  text-align: center;
+}
+
+
 </style>

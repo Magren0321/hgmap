@@ -1,4 +1,17 @@
-export default function markers(): any[]{return [
+interface PointData{
+    name: string;
+    latitude: number;
+    longitude: number;
+}
+interface Point{
+    type: string;
+    centerLatitude: number;
+    centerLongitude: number;
+    zoom: number;
+    data: PointData[];
+}
+
+export default function markers(): Point[]{ return [
     {
         type: "饭堂",
         centerLatitude:23.434734,
@@ -6,14 +19,14 @@ export default function markers(): any[]{return [
         zoom: 17,
         data:[
             {
+                name:"二饭",
+                latitude:23.432702,
+                longitude:113.170688,
+            },
+            {
                 name:"一饭",
                 latitude:23.432408,
                 longitude:113.170602,
-            },
-            {
-                name:"二饭",
-                latitude:23.432703,
-                longitude:113.170688
             },
             {
                 name:"三饭",
@@ -28,7 +41,380 @@ export default function markers(): any[]{return [
         ]
     },
     {
-       
-    }
+       type:"校门",
+       centerLatitude:23.42879,
+       centerLongitude:113.174317,
+       zoom: 17,
+       data:[
+           {
+               name:"校门",
+               latitude:23.42879,
+               longitude:113.174317,
+           }
+       ]
+    },
+    {
+        type:"教学楼",
+        centerLatitude:23.433107,
+        centerLongitude:113.172487,
+        zoom: 17,
+        data:[
+            {
+                name:"A1",
+                latitude:23.430197,
+                longitude:113.172448,
+            },
+            {
+                name:"A2",
+                latitude:23.430507,
+                longitude:113.172073,
+            },
+            {
+                name:"A3",
+                latitude:23.430955,
+                longitude:113.171869,
+            },
+            {
+                name:"A4",
+                latitude:23.431201,
+                longitude:113.171413,
+            },
+            {
+                name:"A5",
+                latitude:23.430542,
+                longitude:113.171676,
+            },
+            {
+                name:"A6",
+                latitude:23.431655,
+                longitude:113.174027,
+            },
+            {
+                name:"A7",
+                latitude:23.431807,
+                longitude:113.174364,
+            },
+            {
+                name:"A8",
+                latitude:23.432137,
+                longitude:113.174681,
+            },
+            {
+                name:"A9",
+                latitude:23.432428,
+                longitude:113.174944,
+            },
+            {
+                name:"A10",
+                latitude:23.432619,
+                longitude:113.175185,
+            },
+            {
+                name:"B9",
+                latitude:23.428741,
+                longitude:113.173576,
+            },
+            {
+                name:"B8",
+                latitude:23.428977,
+                longitude:113.172718,
+            },
+            {
+                name:"B7",
+                latitude:23.428889,
+                longitude:113.171967,
+                
+            },
+            {
+                name:"B6",
+                latitude:23.429253,
+                longitude:113.172192,
+            },
+            {
+                name:"B5",
+                latitude:23.431074,
+                longitude:113.170894,
+            },
+            {
+                name:"B4",
+                latitude:23.4307,
+                longitude:113.171124,
+            },
+            {
+                name:"B3",
+                latitude:23.430301,
+                longitude:113.171344,
+            },
+            {
+                name:"B2",
+                latitude:23.429996,
+                longitude:113.171591,
+            },
+            {
+                name:"B1",
+                latitude:23.429691,
+                longitude:113.171934,
+            },
+        ]
+     },
+     {
+        type:"行政楼",
+        centerLatitude:23.43067,
+        centerLongitude:113.173651,
+        zoom: 17,
+        data:[
+            {
+                name:"行政楼",
+                latitude:23.43039,
+                longitude:113.174273,
+            }
+        ]
+     },
+     {
+        type:"图书馆",
+        centerLatitude:23.432634,
+        centerLongitude:113.171478,
+        zoom: 17,
+        data:[
+            {
+                name:"图书馆",
+                latitude:23.431881,
+                longitude:113.170931,
+            }
+        ]
+     },
+     {
+        type:"学生宿舍",
+        centerLatitude:23.43399,
+        centerLongitude:113.172847,
+        zoom: 17,
+        data:[
+            {
+                name:"C1",
+                latitude:23.432548,
+                longitude:113.170563,
+            },
+            {
+                name:"C2",
+                latitude:23.432863,
+                longitude:113.170616,
+            },
+            {
+                name:"C3",
+                latitude:23.433247,
+                longitude:113.170488,
+            },
+            {
+                name:"C4",
+                latitude:23.433636,
+                longitude:113.170488,
+            },
+            {
+                name:"C5",
+                latitude:23.432937,
+                longitude:113.171367,
+            },
+            {
+                name:"C6",
+                latitude:23.434005,
+                longitude:113.171705,
+            },
+            {
+                name:"C7",
+                latitude:23.436264,
+                longitude:113.171673,
+            },
+            {
+                name:"C8",
+                latitude:23.43682,
+                longitude:113.171652,
+            },
+            {
+                name:"C9",
+                latitude:23.437391,
+                longitude:113.171791,
+            },
+            {
+                name:"C10",
+                latitude:23.437238,
+                longitude:113.172317,
+            },
+            {
+                name:"C11",
+                latitude:23.435885,
+                longitude:113.173513,
+            },
+            {
+                name:"C12",
+                latitude:23.436446,
+                longitude:113.172918,
+            },
+            {
+                name:"C13",
+                latitude:23.436874,
+                longitude:113.173803,
+            },
+            {
+                name:"C14",
+                latitude:23.437322,
+                longitude:113.173084,
+            },
+            {
+                name:"C15",
+                latitude:23.437278,
+                longitude:113.173819,
+            },
+            {
+                name:"C16",
+                latitude:23.438238,
+                longitude:113.171373,
+            },
+            {
+                name:"C17",
+                latitude:23.437982,
+                longitude:113.171856,
+            },
+            {
+                name:"C18",
+                latitude:23.438543,
+                longitude:113.171083,
+            },
+            {
+                name:"C19",
+                latitude:23.438597,
+                longitude:113.171813,
+            },
+            {
+                name:"C20",
+                latitude:23.438681,
+                longitude:113.172708,
+            },
+            {
+                name:"C21",
+                latitude:23.437957,
+                longitude:113.173519,
+            },
+            {
+                name:"C22",
+                latitude:23.437947,
+                longitude:113.174237,
+            },
+        ]
+     },
+     {
+        type:"活动中心",
+        centerLatitude:23.434536,
+        centerLongitude:113.172558,
+        zoom: 17,
+        data:[
+            {
+                name:"活动中心",
+                latitude:23.434994,
+                longitude:113.173637,
+            }
+        ]
+     },
+     {
+        type:"生活服务",
+        centerLatitude:23.434536,
+        centerLongitude:113.172558,
+        zoom: 17,
+        data:[
+            {
+                name:"京东便利店",
+                latitude:23.434177,
+                longitude:113.171759,
+            },
+            {
+                name:"快递",
+                latitude:23.433513,
+                longitude:113.170482,
+            },
+            {
+                name:"快递",
+                latitude:23.433114,
+                longitude:113.170461,
+            },
+            {
+                name:"理发店",
+                latitude:23.431573,
+                longitude:113.171652,
+            },
+            {
+                name:"后勤服务结算中心",
+                latitude:23.431455,
+                longitude:113.171469,
+            },
+            {
+                name:"银行",
+                latitude:23.431352,
+                longitude:113.171335,
+            },
+            {
+                name:"卫生所",
+                latitude:23.428832,
+                longitude:113.173661,
+            },
+            
+        ]
+     },
+     {
+        type:"体育场所",
+        centerLatitude:23.434536,
+        centerLongitude:113.172558,
+        zoom: 17,
+        data:[
+            {
+                name:"体育馆",
+                latitude:23.435201,
+                longitude:113.172145,
+            },
+            {
+                name:"足球场",
+                latitude:23.434905,
+                longitude:113.170799,
+            },
+            {
+                name:"田径场",
+                latitude:23.434871,
+                longitude:113.171169,
+            },
+            {
+                name:"篮球场",
+                latitude:23.435422,
+                longitude:113.171512,
+            },
+            {
+                name:"篮球场",
+                latitude:23.436648,
+                longitude:113.172446,
+            },
+            {
+                name:"篮球场",
+                latitude:23.436791,
+                longitude:113.173063,
+            },  
+            {
+                name:"篮球场",
+                latitude:23.433508,
+                longitude:113.171078,
+            }, 
+            {
+                name:"网球场",
+                latitude:23.43525,
+                longitude:113.173384,
+            },
+            {
+                name:"排球场",
+                latitude:23.434881,
+                longitude:113.171845,
+            },
+            {
+                name:"游泳池",
+                latitude:23.437347,
+                longitude:113.174669,
+            },
+        ]
+     },
 ]
 }
