@@ -3,7 +3,7 @@
       <div class="menuIcon" @click="showDialog">
           <icon name="about" :w="30" :h="30" ></icon>
       </div>
-      <div class="menuIcon">
+      <div class="menuIcon" @click="toPageSchoolInfo">
           <icon name="school" :w="30" :h="30" ></icon>
       </div>
       <div class="menuIcon" @click="schoolBus">
@@ -41,7 +41,7 @@ import markers from '@/config/markers.ts'
 @Component
 export default class Mapmenu extends Vue {
   
-  YunVR = "https://720yun.com/t/79f26j8Ounf?scene_id=8751914"
+  YunVR = "https://720yun.com/t/79f26j8Ounf?scene_id=8751914" //720云vr网址
   show = true
 
   //接收父组件传来的值
@@ -120,6 +120,12 @@ export default class Mapmenu extends Vue {
   //VR网页
   toPageVR(): void{
     window.location.href = this.YunVR
+  }
+  //学校介绍
+  toPageSchoolInfo(): void{
+    this.$router.push({
+      path:'/schoolinfo'
+    })
   }
   //显示校巴路线
   schoolBus(): void{
