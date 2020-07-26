@@ -40,16 +40,8 @@
 
 <script lang="ts">
 import { Component,Vue } from 'vue-property-decorator'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import SwiperClass, { SwiperOptions } from 'swiper'
 
-
-@Component({
-  components: {
-    Swiper,
-    SwiperSlide,
-  }
-})
 
 export default class SchoolInfo extends Vue {
  
