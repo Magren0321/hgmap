@@ -9,13 +9,18 @@
           center>
         <div class="header">
             <img id="icon" v-bind:src="icon">
-            <p>{{name}}</p>
+        </div>
+        <div class="titile">
+          <p>{{name}}</p>
         </div>
         <div class="info">
-          <span>华广地图是基于Vue全家桶 + TypeScript + Element-UI以及ES6和高德地图Api技术栈的网站。源码已发布在Github上:
-            <a href="https://github.com/Magren0321/hgmap">华广地图</a></span><br><br>
-          <span>该网站用于服务华广师生更全面的了解学校各场所位置，帮助新生更快熟悉校园。</span><br><br>
-          <span>目前该项目还在完善中</span>
+          <p>华广地图是由星空学生创新中心开发运营，用于服务华广师生更全面了解学校场所以及帮助新生快速熟悉校园的一款产品。</p>
+          <p>该网站有基本的定位功能并且可用于显示常用校巴路线以及上下车点，和标记大部分学校场所所在地点，同时用户可通过全景功能看到学校整体面貌。</p>
+          <p>其中,学校全景由华广航模协会授权予星空学生创新中心使用。</p>
+        </div>
+        <div class="hm">
+          <img v-bind:src="hmicon">
+          <p>华广航模协会</p>
         </div>
       </el-dialog>
     </div>
@@ -38,9 +43,11 @@ import { Component,Vue } from 'vue-property-decorator';
 export default class Map extends Vue {
   map: any = null
   dialog = false
+  
   //dialog信息
   icon = require('../assets/img/icon.png')
-  name = "MAGREN"
+  hmicon = require('../assets/img/hmicon.png')
+  name = "星空学生创新中心"
 
   // methods
   //初始化地图
@@ -55,11 +62,41 @@ export default class Map extends Vue {
       pitch:40, // 地图俯仰角度，有效范围 0 度- 83 度
       buildingAnimation:true, //3d地图显示动画
      });
+     this.personOptions(this.map,true)
     }catch (err) {
       console.error(err);
     } 
   }
-  
+  //添加定位
+  personOptions(map: any,showOptions: boolean): void{
+    const win: any = window 
+    const options = {
+    'showButton': showOptions,//是否显示定位按钮
+		'buttonPosition': 'LB',//定位按钮的位置
+		/* LT LB RT RB */
+		'buttonOffset': new win.AMap.Pixel(20, 30),//定位按钮距离对应角落的距离
+		'showMarker': true,//是否显示定位点
+		'markerOptions':{//自定义定位点样式，同Marker的Options
+		  'offset': new win.AMap.Pixel(18, -36),
+		  'content':'<img src="https://a.amap.com/jsapi_demos/static/resource/img/user.png" style="width:36px;height:36px"/>'
+		},
+		'showCircle': false,//是否显示定位精度圈
+		'circleOptions': {//定位精度圈的样式
+			'strokeColor': '#0093FF',
+			'noSelect': true,
+			'strokeOpacity': 0.5,
+			'strokeWeight': 1,
+			'fillColor': '#02B0FF',
+			'fillOpacity': 0.25
+		}
+    }
+    map.plugin(["AMap.Geolocation"], function() {
+        const geolocation = new win.AMap.Geolocation(options);
+        map.addControl(geolocation);
+        //添加上下面这句话后打开地图中心便会转移到用户定位点
+        // geolocation.getCurrentPosition()
+    });
+  }
   //显示Dialog，信息
   private handleChildValue(val: boolean) {
         // val: 子组件传过来的值
@@ -91,17 +128,41 @@ export default class Map extends Vue {
   color:#54B7E7;
 }
 #icon{
-  width: 30%;
-  height: 30%;
-  border-radius: 100px;
+  margin-top: 30px;
+  width: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.header{
+.titile{
   text-align: center;
+}
+.titile p{
+  margin-top: 40px;
+  font-size: 23px
 }
 .info{
-  margin-top: 20px;
   text-align: center;
 }
-
+.info p{
+  margin-top: 20px;
+  font-size: 17px;
+}
+.hm{
+  height: 100px;
+  display: flex;
+}
+.hm img{
+  margin-top: 20px;
+  margin-left: 9%;
+  border-radius: 100px;
+  width: 80px;
+  
+}
+.hm p{
+  margin-left: 10px;
+  margin-top:40px;
+  font-size: 20px;
+}
 
 </style>
