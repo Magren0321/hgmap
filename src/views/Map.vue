@@ -7,10 +7,10 @@
           :visible.sync="dialog"
           :fullscreen = true
           center>
-        <div class="header">
-            <img id="icon" v-bind:src="icon">
+        <div class="headericon">
+            <img id="staricon" v-bind:src="icon">
         </div>
-        <div class="titile">
+        <div class="titilename">
           <p>{{name}}</p>
         </div>
         <div class="info">
@@ -111,10 +111,6 @@ export default class Map extends Vue {
 </script>
 
 <style lang="scss">
- *{
-   margin: 0;
-   padding: 0;
- }
 #container{
   position: absolute;
   width: 100%;
@@ -127,17 +123,17 @@ export default class Map extends Vue {
   border-width: 0px;
   color:#54B7E7;
 }
-#icon{
+#staricon{
   margin-top: 30px;
   width: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  clear: both;
+  display: block;
+  margin: auto;
 }
-.titile{
+.titilename{
   text-align: center;
 }
-.titile p{
+.titilename p{
   margin-top: 40px;
   font-size: 23px
 }

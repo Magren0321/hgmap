@@ -23,10 +23,7 @@
       <h2>简介</h2>
       <hr>
       <div class="info">
-      <p>华南理工大学广州学院坐落于广东省广州市，是教育部批准设立的一所以工科为主，经济、管理、文学、理学、艺术协调发展的多科性大学。
-          由举办方华南理工大学和投资方广州珠江云峰投资控股有限公司合作创办，是数据中国“百校工程”项目建设院校、广东省大学生创新创业教育示范学校、
-          广州市知识产权试点学校、中国第一所IACBE国际认证大学。
-      </p>
+      <p>华南理工大学广州学院坐落于广东省广州市，是教育部批准设立的一所以工科为主，经济、管理、文学、理学、艺术协调发展的多科性大学。由举办方华南理工大学和投资方广州珠江云峰投资控股有限公司合作创办，是数据中国“百校工程”项目建设院校、广东省大学生创新创业教育示范学校、广州市知识产权试点学校、中国第一所IACBE国际认证大学。</p>
       </div>
       <div class="video">
           <video controls="controls">
@@ -55,11 +52,18 @@ export default class SchoolInfo extends Vue {
 }
 </script>
 
-<style scoped>
- *{
-   margin: 0;
-   padding: 0;
- }
+<style scoped lang="scss">
+.content{
+    position: absolute;
+    margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+    max-width: 700px;
+    
+}
 .swiper img{
     width: 100%;
     height: 200px;
@@ -135,6 +139,9 @@ export default class SchoolInfo extends Vue {
     margin-left: 10px;
     margin-right: 10px;
     text-align: left;
+}
+.info p{
+    text-indent:2em; 
 }
 .video video{
     margin-left: 5%;

@@ -22,7 +22,7 @@ Vue.use(VueRouter)
     path: '/schoolinfo',
     name: 'schoolinfo',
     component: SchoolInfo
-  },
+  }
 ]
 
 const router = new VueRouter({
