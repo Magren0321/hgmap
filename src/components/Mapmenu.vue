@@ -55,6 +55,16 @@ export default class Mapmenu extends Vue {
   }
 
   // methods
+   //VR网页
+  toPageVR(): void{
+    window.location.href = this.YunVR
+  }
+  //学校介绍
+  toPageSchoolInfo(): void{
+    this.$router.push({
+      path:'/schoolinfo'
+    })
+  }
   //不同item选项
   switchItem(command: string):  void{
     const win: any = window
@@ -116,16 +126,6 @@ export default class Mapmenu extends Vue {
         break 
       }
     }
-  }
-  //VR网页
-  toPageVR(): void{
-    window.location.href = this.YunVR
-  }
-  //学校介绍
-  toPageSchoolInfo(): void{
-    this.$router.push({
-      path:'/schoolinfo'
-    })
   }
   //显示校巴路线
   schoolBus(): void{

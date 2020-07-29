@@ -61,7 +61,7 @@ export default class SchoolInfo extends Vue {
 	left: 0;
 	right: 0;
 	bottom: 0;
-    max-width: 700px;
+    max-width: 600px;
     
 }
 .swiper img{
