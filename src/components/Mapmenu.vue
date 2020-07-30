@@ -37,6 +37,7 @@
 <script lang="ts">
 import { Component,Vue,Prop,Emit } from 'vue-property-decorator';
 import markers from '@/config/markers.ts'
+import {Point,PointData} from '../config/type'
 
 @Component
 export default class Mapmenu extends Vue {
@@ -50,7 +51,7 @@ export default class Mapmenu extends Vue {
 
   //向父组件传值
   @Emit()
-  private showDialog(){
+  private showDialog(): boolean{
     return this.show
   }
 
@@ -107,11 +108,11 @@ export default class Mapmenu extends Vue {
       return
     }
     //非商业街
-    const i = markers()
+    const i: Point[] = markers()
     for(let z = 0; z< i.length;z++){
       if(i[z].type ==  command){
           this.map.setZoomAndCenter(i[z].zoom,[i[z].centerLongitude,i[z].centerLatitude])
-          const p = i[z].data
+          const p: PointData[] = i[z].data
           for(let k = 0; k<p.length;k++){
               const marker = new win.AMap.Marker({
                   position: new win.AMap.LngLat(p[k].longitude, p[k].latitude),   

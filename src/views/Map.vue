@@ -103,7 +103,7 @@ export default class Map extends Vue {
       this.dialog = val;
   }
 
-   mounted() {
+   mounted(): void{
      this.initAMap();
   }
 }
