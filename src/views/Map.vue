@@ -98,7 +98,7 @@ export default class Map extends Vue {
     });
   }
   //显示Dialog，信息
-  private handleChildValue(val: boolean) {
+  private handleChildValue(val: boolean): void {
         // val: 子组件传过来的值
       this.dialog = val;
   }

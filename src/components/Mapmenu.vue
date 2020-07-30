@@ -71,7 +71,7 @@ export default class Mapmenu extends Vue {
     this.map.clearMap()
     //商业街绘制路线
     if(command == "商业街"){
-       const polygonPath = [
+       const polygonPath: number[][]= [
          //贝瑟尔曲线
         [113.171845,23.434300],
         [113.17200,23.433215,113.171310,23.432625]
@@ -132,7 +132,7 @@ export default class Mapmenu extends Vue {
     this.map.clearMap()
     const win: any = window
     //行驶路线标点
-    const path = [
+    const path: number[][] = [
       [113.173348,23.429987], //校门口
       [113.173189,23.430175],
       [113.17173,23.429122],
@@ -179,7 +179,7 @@ export default class Mapmenu extends Vue {
   busPoint(): void{
     const win: any = window
     //中途下车点
-    const getOffPoint = [
+    const getOffPoint: number[][] = [
       [113.170508,23.43118], //图书馆/一饭
       [113.17025,23.43306], //c3
       [113.170229,23.433405], //c4
@@ -189,7 +189,7 @@ export default class Mapmenu extends Vue {
       [113.171436,23.437736], //c16门口
     ]
     //上下车点
-    const getOnPoint = [
+    const getOnPoint: number[][] = [
       [113.173348,23.429987], //校门口
       [113.172393,23.43771] //四饭
     ]

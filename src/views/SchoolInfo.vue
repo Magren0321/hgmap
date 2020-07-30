@@ -37,7 +37,6 @@
 
 <script lang="ts">
 import { Component,Vue } from 'vue-property-decorator'
-import SwiperClass, { SwiperOptions } from 'swiper'
 
 
 export default class SchoolInfo extends Vue {
