@@ -7,25 +7,9 @@
 
 [华广地图](https://map.xingkong.us/)
 
-## Project setup
-```
-npm install
-```
+## 项目运行
+起飞！
+> npm install
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+> npm run serve
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
