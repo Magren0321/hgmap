@@ -62,16 +62,17 @@ export default class Map extends Vue {
       pitch:40, // 地图俯仰角度，有效范围 0 度- 83 度
       buildingAnimation:true, //3d地图显示动画
      });
-     this.personOptions(this.map,true)
+     this.personOptions(this.map)
     }catch (err) {
       console.error(err);
     } 
   }
   //添加定位
-  personOptions(map: any,showOptions: boolean): void{
+  personOptions(map: any): void{
     const win: any = window 
     const options = {
-    'showButton': showOptions,//是否显示定位按钮
+    'enableHighAccuracy': true,//是否使用高精度定位，默认:true
+    'showButton': true,//是否显示定位按钮
 		'buttonPosition': 'LB',//定位按钮的位置
 		/* LT LB RT RB */
 		'buttonOffset': new win.AMap.Pixel(20, 30),//定位按钮距离对应角落的距离
