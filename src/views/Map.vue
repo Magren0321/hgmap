@@ -1,12 +1,20 @@
 <template>
   <div id="map">
     <div id="container">
-      <Mapmenu :map='map' @show-dialog="handleChildValue"></Mapmenu>
+      <Mapmenu :map='map' @show-dialog="handleChildValue" @get-place-name="getPlaceName"></Mapmenu>
+       <el-dialog
+          title="介  绍"
+          :visible.sync="placeIntroduction"
+          :fullscreen = true
+          center>
+        <PlaceDetails style="margin-top:54px" :placeName ='placeName' :placeBackground ='placeBackground' :placeDetail ='placeDetail'></PlaceDetails>
+       </el-dialog>
       <el-dialog
           title="关  于"
           :visible.sync="dialog"
           :fullscreen = true
           center>
+        <div class="about">  
         <div class="headericon">
             <img id="staricon" v-bind:src="icon">
         </div>
@@ -22,6 +30,7 @@
           <img v-bind:src="hmicon">
           <p>华广航模协会</p>
         </div>
+        </div>
       </el-dialog>
     </div>
   </div>
@@ -31,11 +40,15 @@
 // @ is an alias to /src
 import AMap from '@/config/amap.ts'
 import Mapmenu from '@/components/Mapmenu.vue'
+import PlaceDetails from '@/components/PlaceDetails.vue'
 import { Component,Vue } from 'vue-property-decorator';
+import { AxiosPromise } from 'axios';
+import request from '../utils/request';
 
 @Component({
   components: {
-    Mapmenu
+    Mapmenu,
+    PlaceDetails
   }
 })
 
@@ -44,11 +57,16 @@ export default class Map extends Vue {
   map: any = null
   dialog = false
   
+ 
   //dialog信息
   icon = require('../assets/img/icon.png')
   hmicon = require('../assets/img/hmicon.png')
   name = "星空学生创新中心"
 
+  placeIntroduction = false
+  placeName = ''
+  placeBackground = ''
+  placeDetail = ''
   // methods
   //初始化地图
   async initAMap(): Promise<void> {
@@ -98,12 +116,38 @@ export default class Map extends Vue {
         // geolocation.getCurrentPosition()
     });
   }
+
+   //获取地点的详细信息
+    getPlacedetal(place: string): Promise<any>{
+        return request({
+         url:'/down?place='+place,
+         method: 'get'
+     }).then((response)=>{
+       if(response.data.errorcode == 0){
+          this.placeIntroduction = true
+          this.placeDetail = response.data.data.introduction
+          const bg = "http://119.23.17.233:8080/storage/"+response.data.data.img.substring(6)
+          this.placeBackground = bg
+       }
+     }).catch((error)=>{
+       console.log(error)
+     })
+   }
+ 
   //显示Dialog，信息
   private handleChildValue(val: boolean): void {
         // val: 子组件传过来的值
       this.dialog = val;
   }
-
+  //显示地点，信息
+  private handleIntroduction(val: boolean): void{
+    // val: 子组件传来的值
+    this.placeIntroduction = val
+  }
+  private getPlaceName(val: string): void{
+    this.placeName = val
+    this.getPlacedetal(this.placeName)
+  }
    mounted(): void{
      this.initAMap();
   }
@@ -123,6 +167,15 @@ export default class Map extends Vue {
   border-color: #54B7E7;
   border-width: 0px;
   color:#54B7E7;
+}
+.about{
+  margin-top:54px;
+  max-width: 550px;
+  margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 }
 #staricon{
   margin-top: 30px;
@@ -154,12 +207,15 @@ export default class Map extends Vue {
   margin-left: 9%;
   border-radius: 100px;
   width: 80px;
-  
 }
 .hm p{
   margin-left: 10px;
   margin-top:40px;
   font-size: 20px;
+} 
+.el-dialog__wrapper{
+  z-index:99999!important;
 }
+
 
 </style>

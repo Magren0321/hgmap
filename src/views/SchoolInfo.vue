@@ -55,13 +55,11 @@ export default class SchoolInfo extends Vue {
 .content{
     position: absolute;
     margin: auto;
-	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
     max-width: 600px;
-    
 }
 .swiper img{
     width: 100%;

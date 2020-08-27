@@ -44,17 +44,21 @@ export default class Mapmenu extends Vue {
   
   YunVR = "https://720yun.com/t/79f26j8Ounf?scene_id=8751914" //720云vr网址
   show = true
+  showintroduction = true
 
   //接收父组件传来的值
   @Prop()
   private map: any
 
-  //向父组件传值
+  //向父组件传值，是否打开组织介绍
   @Emit()
   private showDialog(): boolean{
     return this.show
   }
-
+  @Emit()
+  private getPlaceName(place: string): string{
+    return place;
+  }
   // methods
    //VR网页
   toPageVR(): void{
@@ -70,6 +74,7 @@ export default class Mapmenu extends Vue {
   switchItem(command: string):  void{
     const win: any = window
     this.map.clearMap()
+   
     //商业街绘制路线
     if(command == "商业街"){
        const polygonPath: number[][]= [
@@ -103,12 +108,16 @@ export default class Mapmenu extends Vue {
           offset: new win.AMap.Pixel(0, -3),  //设置文本标注偏移量
           content:"商业街", //设置文本标注内容
           direction: 'top' //设置文本标注方位
-      }); 
+      })
+       marker.on('click',function(): void{
+            that.getPlaceName("商业街") //传递点击地点的名字
+      })
       this.map.add(marker)
       return
     }
     //非商业街
     const i: Point[] = markers()
+    const that = this
     for(let z = 0; z< i.length;z++){
       if(i[z].type ==  command){
           this.map.setZoomAndCenter(i[z].zoom,[i[z].centerLongitude,i[z].centerLatitude])
@@ -122,6 +131,10 @@ export default class Mapmenu extends Vue {
                   content:p[k].name, //设置文本标注内容
                   direction: 'top' //设置文本标注方位
               }); 
+              //绑定marker的点击事件
+              marker.on('click',function(): void{
+                  that.getPlaceName(p[k].name) //传递点击地点的名字
+              })
           this.map.add(marker)
         }
         break 
@@ -244,7 +257,6 @@ export default class Mapmenu extends Vue {
 .el-scrollbar{
    height:250px;
 }
-
 
 
 </style>
