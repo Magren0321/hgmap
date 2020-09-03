@@ -126,7 +126,7 @@ export default class Map extends Vue {
        if(response.data.errorcode == 0){
           this.placeIntroduction = true
           this.placeDetail = response.data.data.introduction
-          const bg = "http://119.23.17.233:8080/storage/"+response.data.data.img.substring(6)
+          const bg = "https://xingkong.gqt.gcu.edu.cn/map/storage/"+response.data.data.img.substring(6)
           this.placeBackground = bg
        }
      }).catch((error)=>{
@@ -150,6 +150,7 @@ export default class Map extends Vue {
   }
    mounted(): void{
      this.initAMap();
+     
   }
 }
 

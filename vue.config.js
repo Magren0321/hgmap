@@ -15,10 +15,10 @@ module.exports = {
       proxy: {
         '/api': {
             target: 'https://xingkong.gqt.gcu.edu.cn/map/api/',// 你要请求的后端接口ip+port
-            changeOrigin: false, //设置true后可以使target是域名
+            changeOrigin: true, //设置true后可以使target是域名
             ws: true,// 开启webSocket
             pathRewrite: {
-              '^/api':'/api' //这里用'/api'代替target里面的地址,后面的组建中直接使用api代替
+              '^/api': '' 
           }
         }
     }

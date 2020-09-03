@@ -54,7 +54,7 @@ const service = axios.create({
     }
   },
   // 是否跨站点访问控制请求
-  withCredentials: true,
+  withCredentials: false,
   timeout: 30000, //超时时间
   transformRequest: [(data) => {
     data = JSON.stringify(data)
