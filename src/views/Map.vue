@@ -91,15 +91,16 @@ export default class Map extends Vue {
     const options = {
     'enableHighAccuracy': true,//是否使用高精度定位，默认:true
     'showButton': true,//是否显示定位按钮
+    'zoomToAccuracy': true,     
 		'buttonPosition': 'LB',//定位按钮的位置
 		/* LT LB RT RB */
 		'buttonOffset': new win.AMap.Pixel(20, 30),//定位按钮距离对应角落的距离
 		'showMarker': true,//是否显示定位点
 		'markerOptions':{//自定义定位点样式，同Marker的Options
-		  'offset': new win.AMap.Pixel(0, -5), //marker相对定位点的距离
+		  'offset': new win.AMap.Pixel(-10,-34), //marker相对定位点的距离
 		  'content':'<img src="https://a.amap.com/jsapi_demos/static/resource/img/user.png" style="width:36px;height:36px"/>'
 		},
-		'showCircle': true,//是否显示定位精度圈
+		'showCircle': false,//是否显示定位精度圈
 		'circleOptions': {//定位精度圈的样式
 			'strokeColor': '#0093FF',
 			'noSelect': true,
