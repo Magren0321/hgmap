@@ -1,5 +1,6 @@
 <template>
   <div id="map">
+    
     <div id="container">
       <Mapmenu :map='map' @show-dialog="handleChildValue" @get-place-name="getPlaceName"></Mapmenu>
        <el-dialog
@@ -22,9 +23,9 @@
           <p>{{name}}</p>
         </div>
         <div class="info">
-          <p>华广地图是由星空学生创新中心开发运营，用于服务华广师生更全面了解学校场所以及帮助新生快速熟悉校园的一款产品。</p>
+          <p>华广地图是由星空工作室开发运营，用于服务华广师生更全面了解学校场所以及帮助新生快速熟悉校园的一款产品。</p>
           <p>该网站有基本的定位功能并且可用于显示常用校巴路线以及上下车点，和标记大部分学校场所所在地点，同时用户可通过全景功能看到学校整体面貌。</p>
-          <p>其中,学校全景由华广航模协会授权予星空学生创新中心使用。</p>
+          <p>其中,学校全景由华广航模协会授权予星空工作室使用。</p>
         </div>
         <div class="hm">
           <img v-bind:src="hmicon">
@@ -45,6 +46,7 @@ import { Component,Vue } from 'vue-property-decorator';
 import { AxiosPromise } from 'axios';
 import request from '../utils/request';
 
+
 @Component({
   components: {
     Mapmenu,
@@ -56,12 +58,10 @@ import request from '../utils/request';
 export default class Map extends Vue {
   map: any = null
   dialog = false
-  
- 
   //dialog信息
   icon = require('../assets/img/icon.png')
   hmicon = require('../assets/img/hmicon.png')
-  name = "星空学生创新中心"
+  name = "星空工作室"
 
   placeIntroduction = false
   placeName = ''
@@ -73,17 +73,18 @@ export default class Map extends Vue {
    try {
     const res: any = await AMap();
     this.map = new res.Map("container", {
-      viewMode:'3D', // 地图模式,手机下只有2d效果
+      // viewMode:'3D', // 地图模式,手机下只有2d效果
       resizeEnable: true, //是否监控地图容器尺寸变化
       zoom: 17, //初始化地图层级
       center: [113.172847,23.43399], //初始化地图中心点
       pitch:40, // 地图俯仰角度，有效范围 0 度- 83 度
-      buildingAnimation:true, //3d地图显示动画
+      // buildingAnimation:true, //3d地图显示动画
      });
      this.personOptions(this.map)
     }catch (err) {
       console.error(err);
     } 
+    
   }
   //添加定位
   personOptions(map: any): void{
@@ -116,6 +117,7 @@ export default class Map extends Vue {
         //添加上下面这句话后打开地图中心便会转移到用户定位点
         // geolocation.getCurrentPosition()
     });
+    
   }
 
    //获取地点的详细信息

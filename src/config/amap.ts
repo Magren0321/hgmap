@@ -8,7 +8,6 @@ export default function MapLoader(): Promise<void>{
     } else {
       const url='https://webapi.amap.com/maps?v=1.4.15&key=ba6c5cc2366f96d5beb9e1025c6d88aa&callback=onLoad'
       const script: HTMLScriptElement = document.createElement('script')
-      script.charset = 'utf-8'
       script.src = url
       script.onerror = reject
       document.head.appendChild(script)
